@@ -1,0 +1,66 @@
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Site de dépôt de messages</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Site de dépôt de messages</h1>
+        </header>
+
+        <main>
+
+            <section id="settings">
+                <h2>Paramètres</h2>
+                <div class="form-group">
+                    <label for="ms-url">Adresse du micro-service:</label>
+                    <input type="text" id="ms-url" placeholder="http://localhost:8080">
+                    <button id="validate-url">Valider</button>
+                </div>
+  
+                <div class="form-group">
+                    <label for="theme-select">Thème:</label>
+                    <select id="theme-select">
+                        <option value="light">Clair</option>
+                        <option value="dark">Sombre</option>
+                    </select>
+                </div>
+            </section>
+
+            
+            <section id="message-list">
+                <h2>Messages récents</h2>
+                <ul id="messages">
+                    <li>Premier message de test</li>
+                    <li>Deuxième message avec un peu plus de texte</li>
+                    <li>Troisième message pour avoir du contenu</li>
+                    <li>Quatrième message pour remplir la liste</li>
+                    <li>Cinquième message pour compléter la liste demandée</li>
+                </ul>
+            </section>
+
+            <section id="post-message">
+                <h2>Poster un nouveau message</h2>
+                <div class="form-group">
+                    <label for="pseudo">Pseudo:</label>
+                    <input type="text" id="pseudo" placeholder="Votre pseudo">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" rows="4" placeholder="Écrivez votre message ici..."></textarea>
+                </div>
+                <button id="submit-btn">Envoyer</button>
+                <button id="update-btn">Mise à jour</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>TD Web - CentraleSupélec</p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+    </html>

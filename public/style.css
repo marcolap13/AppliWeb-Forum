@@ -1,0 +1,305 @@
+/* Reset et base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Play&display=swap');
+
+:root {
+    --primary-color: #00f3b2;
+    --secondary-color: #fe01fe;
+    --accent-color: #00f0ff;
+    --dark-bg: #121225;
+    --light-bg: #f3f7ff;
+    --card-light: rgba(255, 255, 255, 0.8);
+    --card-dark: rgba(14, 14, 26, 0.7);
+    --glow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    --glow-purple: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+}
+
+body {
+    font-family: 'Play', sans-serif;
+    line-height: 1.6;
+    background-color: var(--light-bg);
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(0, 243, 178, 0.1), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(254, 1, 254, 0.1), transparent 25%);
+    color: #333;
+    padding: 0;
+    transition: all 0.5s ease;
+    perspective: 1000px;
+}
+
+/* Header avec effet néon */
+header {
+    background: linear-gradient(135deg, #232338 0%, #121225 100%);
+    color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    border-bottom: 2px solid var(--primary-color);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); }
+    50% { text-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--primary-color); }
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #232338;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary-color);
+    position: relative;
+    display: inline-block;
+}
+
+/* Layout principal avec effet de perspective */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    #message-list {
+        grid-column: span 2;
+    }
+}
+
+/* Sections avec effet glass */
+section {
+    background: var(--card-light);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateZ(0);
+}
+
+section:hover {
+    transform: translateY(-5px) rotateX(2deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Liste des messages stylisée */
+#messages {
+    list-style-type: none;
+}
+
+#messages li {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, rgba(0, 243, 178, 0.07), rgba(254, 1, 254, 0.07));
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+#messages li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.7s;
+}
+
+#messages li:hover::before {
+    left: 100%;
+}
+
+.message-meta {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+/* Formulaires stylisés */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #232338;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+textarea, input[type="text"], select {
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Play', sans-serif;
+}
+
+textarea:focus, input[type="text"]:focus, select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 243, 178, 0.2);
+    outline: none;
+}
+
+/* Boutons futuristes */
+button {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: var(--dark-bg);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 243, 178, 0.2);
+}
+
+#update-btn {
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    box-shadow: 0 4px 15px rgba(254, 1, 254, 0.2);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--glow);
+}
+
+#update-btn:hover {
+    box-shadow: var(--glow-purple);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Footer stylisé */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.05), transparent);
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+}
+
+/* Thème sombre */
+body.dark-theme {
+    background-color: var(--dark-bg);
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(0, 243, 178, 0.15), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(254, 1, 254, 0.15), transparent 25%);
+    color: #eee;
+}
+
+body.dark-theme section {
+    background: var(--card-dark);
+    border-color: rgba(0, 243, 178, 0.2);
+}
+
+body.dark-theme h2 {
+    color: var(--primary-color);
+}
+
+body.dark-theme textarea, 
+body.dark-theme input[type="text"], 
+body.dark-theme select {
+    background-color: rgba(14, 14, 26, 0.8);
+    color: #eee;
+    border-color: #333;
+}
+
+body.dark-theme label {
+    color: var(--primary-color);
+}
+
+body.dark-theme .message-meta {
+    color: #aaa;
+}
+
+body.dark-theme #messages li {
+    background: linear-gradient(to right, rgba(0, 243, 178, 0.1), rgba(254, 1, 254, 0.1));
+    border-left: 4px solid var(--secondary-color);
+}
+
+/* Animation pour les nouvelles entrées */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#messages li {
+    animation: slideIn 0.3s ease forwards;
+}
+
+/* Détails supplémentaires */
+#ms-url {
+    font-family: monospace;
+    letter-spacing: 0;
+}
+
+#validate-url {
+    background: linear-gradient(135deg, #5d5d9c, #232338);
+}
+
+#validate-url:hover {
+    box-shadow: 0 0 10px #5d5d9c, 0 0 20px #5d5d9c;
+}
